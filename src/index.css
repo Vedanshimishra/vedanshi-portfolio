@@ -1,13 +1,40 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.animate-slide-in {
+  animation: slide-in 0.1s ease-out;
 }
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.timeline-item {
+  @apply relative pl-12 pb-12;
+}
+.timeline-item::before {
+  @apply content-[''] absolute left-5 top-2 w-0.5 h-full bg-purple-200 dark:bg-purple-700;
+}
+.timeline-item:last-child::before {
+  @apply h-0;
+}
+.timeline-dot {
+  @apply absolute left-0 top-0 w-10 h-10 rounded-full bg-purple-600 dark:bg-purple-800 border-4 border-white dark:border-gray-900 flex items-center justify-center text-white text-lg;
+}
+.timeline-card {
+    @apply bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+}
+
+
